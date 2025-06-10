@@ -17,8 +17,8 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local:
 1. **Clona el repositorio:**
 
    ```bash
-   git clone https://github.com/loquendo2309/backen-ecommerce.git
-   cd backen-ecommerce
+   git clone https://github.com/Polsix/ecommerce-sixto.git
+   cd ecommerce-sixto
    ```
 
 2. **Instala las dependencias:**
@@ -29,14 +29,15 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local:
 
 3. **Configura las variables de entorno:**
 
-   * Crea un archivo `.env` en la raíz del proyecto.
-   * Copia el contenido del archivo `.envexample` proporcionado en el repositorio.
-   * Reemplaza los valores de las variables según tu configuración local. Por ejemplo:
+   * Se ha creado un archivo `.env` en la raíz del proyecto.
+   * Tomando como plantilla `.envexample` proporcionado en el repositorio.
+   * Los valores de las variables según tu configuración local:
 
      ```env
-     PORT=3000
-     MONGODB_URI=mongodb://localhost:27017/ecommerce
-     JWT_SECRET=tu_clave_secreta
+     PORT=5000
+     MONGO_URI=mongodb+srv://polsix2013:<db_password>@proybackend.myf0icm.mongodb.net/
+     JWT_SECRET=c5e94b0e6ac2d1ac1908a1223c35fef60d1556a256c1dfac867f9525b02387eb8f17b8828067ae62aa0850f35189e894bf5eb89b6814f9b993158e798f43d20b
+
      ```
 
 4. **Inicia el servidor:**
@@ -46,19 +47,58 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local:
    ```
 
    El servidor debería estar corriendo en `http://localhost:3000`.
+   El inicio del servidor esta sujeto a verificación del código
 
 ## Estructura del proyecto
 
 El proyecto está organizado de la siguiente manera:
 
 ```
-backen-ecommerce/
+ecommerce-sixto/
 ├── src/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── middlewares/
+│   ├── adapters/
+        ├── controllers/
+            ├── ProductController.js
+        ├── middlewares/
+            ├── authJwt.js
+        ├── routes/
+            ├── authRoutes.js
+            ├── productRouts.js
+            ├── userRouts.js
+│   ├── application/
+        ├── dtos/
+            ├── ProductDTO.js
+        ├── useCases/
+            ├── CreateCart.js
+            ├── CreateOrder.js
+            ├── CreateProduct.js
+            ├── SignIn.js
+│   ├── config/
+        ├── index.js
+│   ├── domain/
+        ├── entities/
+            ├── Cart.js
+            ├── Order.js
+            ├── Product.js
+            ├── User.js
+        ├── repositories/
+            ├── CartRepository.js
+            ├── OrderRepository.js
+            ├── ProductRepository.js
+            ├── UserRepository.js
+    ├── infraestructure/
+        ├── database/
+            ├── models/
+                ├── ProductModel.js
+            ├── mongoose.js
+            ├── mysqlConnection.js
+        ├── docs/
+            ├── swaggerConfig.js
+        ├── repositories/
+            ├── MongoProductRepository.js
+            ├── MySQLProductRepository.js
 │   └── index.js
+├── .env
 ├── .envexample
 ├── .eslintrc.json
 ├── .gitignore
@@ -66,7 +106,7 @@ backen-ecommerce/
 └── package-lock.json
 ```
 
-* `controllers/`: Contiene la lógica de negocio para manejar las solicitudes y respuestas.
+* `adapters/`: Contiene la lógica de negocio para manejar las solicitudes y respuestas.
 * `models/`: Define los esquemas de Mongoose para las entidades de la base de datos.
 * `routes/`: Define las rutas de la API y las asocia con los controladores correspondientes.
 * `middlewares/`: Contiene funciones intermedias para el manejo de errores, autenticación, etc.
