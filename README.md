@@ -58,15 +58,21 @@ ecommerce-sixto/
 ├── src/
 │   ├── adapters/
         ├── controllers/
+            ├── CartController.js
+            ├── OrderController.js
             ├── ProductController.js
         ├── middlewares/
             ├── authJwt.js
         ├── routes/
             ├── authRoutes.js
+            ├── cartRoutes.js
+            ├── orderRoutes.js
             ├── productRouts.js
             ├── userRouts.js
 │   ├── application/
         ├── dtos/
+            ├── CartDTO.js
+            ├── OrderDTO.js
             ├── ProductDTO.js
         ├── useCases/
             ├── CreateCart.js
@@ -89,12 +95,16 @@ ecommerce-sixto/
     ├── infraestructure/
         ├── database/
             ├── models/
+                ├── CartModel.js
+                ├── OrderModel.js
                 ├── ProductModel.js
             ├── mongoose.js
             ├── mysqlConnection.js
         ├── docs/
             ├── swaggerConfig.js
         ├── repositories/
+            ├── MongoCartRepository.js
+            ├── MongoOrderRepository.js
             ├── MongoProductRepository.js
             ├── MySQLProductRepository.js
 │   └── index.js
