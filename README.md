@@ -58,9 +58,11 @@ ecommerce-sixto/
 ├── src/
 │   ├── adapters/
         ├── controllers/
+            ├── AuthController.js
             ├── CartController.js
             ├── OrderController.js
             ├── ProductController.js
+            ├── UserController.js
         ├── middlewares/
             ├── authJwt.js
         ├── routes/
@@ -68,7 +70,8 @@ ecommerce-sixto/
             ├── cartRoutes.js
             ├── orderRoutes.js
             ├── productRouts.js
-            ├── userRouts.js
+            ├── tokenRouts.js
+            ├── userRoutes.js
 │   ├── application/
         ├── dtos/
             ├── CartDTO.js
@@ -79,6 +82,7 @@ ecommerce-sixto/
             ├── CreateOrder.js
             ├── CreateProduct.js
             ├── SignIn.js
+            ├── SingUp.js
 │   ├── config/
         ├── index.js
 │   ├── domain/
@@ -106,7 +110,11 @@ ecommerce-sixto/
             ├── MongoCartRepository.js
             ├── MongoOrderRepository.js
             ├── MongoProductRepository.js
+            ├── MongoUserRepository.js
             ├── MySQLProductRepository.js
+        ├── services/
+            ├── PasswordHasher.js
+            ├── TokenGenerator.js
 │   └── index.js
 ├── .env
 ├── .envexample

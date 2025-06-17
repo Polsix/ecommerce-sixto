@@ -22,6 +22,18 @@ const verifyToken = (req, res, next) => {
     req.userRoles = decoded.roles;
     next();
   });
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.userId = decoded.id;
+    req.userRoles = decoded.roles;
+    next();
+  } catch (err) {
+    if (err.name === 'TokenExpiredError') {
+      return res.status(401).json({ message: 'Token expired. Please refresh token.' });
+    }
+    res.status(400).json({ message: 'Invalid token.' });
+  }
 };
 
 module.exports = { verifyToken };
